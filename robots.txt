@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Exclude error pages from being indexed as standard content
+Disallow: /404.html
+Disallow: /403.html
+Disallow: /500.html
+
+Sitemap: https://akshat-881236.github.io/HorizonTechX_NovaPlaySuite/sitemap.xml

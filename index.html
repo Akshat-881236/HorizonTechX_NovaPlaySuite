@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="AppCode-1" content="E32a#6G">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>NovaPlay Suite - Immersive Audio OS</title>
+        <meta name="title" content="NovaPlay Suite - Immersive Audio OS">
+        <meta name="description" content="NovaPlay Suite is an immersive audio OS and advanced album management system developed by Akshat Prasad. Explore your local vault, loved tracks, and studio previews seamlessly.">
+        <meta name="AppCode-2" content="F32h#3X">
+        <meta name="keywords" content="NovaPlay Suite, Audio OS, Music Player, Album Management, Akshat Prasad, Akshat Network Hub, HorizonTechX, JavaScript Media Player">
+        <meta name="author" content="Akshat Prasad">
+        <meta name="robots" content="index, follow">
+        <link rel="canonical" href="https://akshat-881236.github.io/HorizonTechX_NovaPlaySuite/">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://akshat-881236.github.io/HorizonTechX_NovaPlaySuite/">
+        <meta property="og:logo" content="https://akshat-881236.github.io/HorizonTechX_NovaPlaySuite/novaplay.svg">
+        <meta property="og:title" content="NovaPlay Suite - Immersive Audio OS">
+        <meta property="og:description" content="NovaPlay Suite is an immersive audio OS and advanced album management system developed by Akshat Prasad. Explore your local vault, loved tracks, and studio previews seamlessly.">
+        <meta property="og:site_name" content="Akshat Network Hub">
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="https://akshat-881236.github.io/HorizonTechX_NovaPlaySuite/">
+        <meta property="twitter:logo" content="https://akshat-881236.github.io/HorizonTechX_NovaPlaySuite/novaplay.svg">
+        <meta property="twitter:title" content="NovaPlay Suite - Immersive Audio OS">
+        <meta property="twitter:description" content="NovaPlay Suite is an immersive audio OS and advanced album management system developed by Akshat Prasad. Explore your local vault, loved tracks, and studio previews seamlessly.">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+        <link rel="icon" href="novaplay.svg" type="image/svg+xml" sizes="any">
+        <meta name="AppCode-3" content="I31a*6P">
+        <script type="application/ld+json">
+        {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Akshat Network Hub",
+        "alternateName": "HorizonTechX",
+        "url": "https://akshat-881236.github.io/",
+        "logo": "https://akshat-881236.github.io/HorizonTechX_NovaPlaySuite/novaplay.svg",
+        "sameInfo": [
+            "https://github.com/akshat-881236",
+            "https://x.com/akshatpsd2005",
+            "https://linkedin.com/in/akshat-prasad-anh/",
+            "https://instagram.com/its_akshat_881236/",
+            "https://medium.com/@its.akshatnetworkhub23",
+            "https://www.linkedin.com/in/akshat-network-hub/",
+            "https://www.youtube.com/@AkshatNetworkHub"
+        ]
+        }
+        </script>
+        <meta name="AppCode-4" content="E52a#8G">
+        <script type="application/ld+json">
+        {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Akshat Prasad",
+        "jobTitle": "Full-Stack Developer",
+        "url": "https://akshat-145609.github.io/MyPortfolioSite/",
+        "affiliation": {
+            "@type": "Organization",
+            "name": "Akshat Network Hub",
+            "url": "https://akshat-881236.github.io/AkshatNetworkHub/"
+        },
+        "sameAs": [
+            "https://github.com/akshat-881236",
+            "https://linkedin.com/in/akshat-prasad-anh/",
+            "https://x.com/akshatpsd2005",
+            "https://instagram.com/its_akshat_881236/",
+            "https://medium.com/@its.akshatnetworkhub23",
+            "https://www.linkedin.com/in/akshat-network-hub/",
+            "https://www.youtube.com/@AkshatNetworkHub"
+        ]
+        }
+        </script>
+<style>
+  /* Base lock overlay styling, fits the NovaPlay theme */
+  #domain-lock-overlay {
+      position: fixed; inset: 0;
+      background: rgba(5, 5, 7, 0.95);
+      backdrop-filter: blur(15px);
+      z-index: 99999;
+      display: none; /* Hidden by default, JS handles it */
+      align-items: center; justify-content: center;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #f3f3f8;
+  }
+  .lock-box {
+      background: #101014; border: 1px solid #22222c;
+      border-radius: 24px; padding: 32px; width: 90%; max-width: 400px;
+      text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+  }
+  .lock-box h2 { color: #8b5cf6; margin-bottom: 12px; font-weight: 800; }
+  .lock-box p { color: #9494a0; font-size: 14px; margin-bottom: 24px; line-height: 1.5; }
+  .lock-input {
+      width: 100%; padding: 14px; border-radius: 12px; border: 1px solid #22222c;
+      background: #18181f; color: #fff; font-size: 14px; text-align: center;
+      margin-bottom: 16px; outline: none; transition: border-color 0.2s;
+  }
+  .lock-input:focus { border-color: #8b5cf6; }
+  .lock-btn {
+      width: 100%; padding: 14px; border-radius: 12px; border: none;
+      background: #8b5cf6; color: #fff; font-weight: 700; font-size: 14px;
+      cursor: pointer; transition: background 0.2s;
+  }
+  .lock-btn:hover { background: #7c3aed; }
+  .lock-error { color: #f43f5e; font-size: 13px; font-weight: 600; margin-top: 12px; min-height: 18px; }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+      const officialDomain = "akshat-881236.github.io";
+      const officialURL = "https://akshat-881236.github.io/HorizonTechX_NovaPlaySuite/";
+      const redirectURL = "https://akshat-881236.github.io/HorizonTechX_NovaPlaySuite/403.html"
+      
+      const currentHost = window.location.hostname;
+      const isIframe = window.self !== window.top;
+      
+      // Allow localhost for your own local development testing
+      const isAuthorizedEnv = (currentHost === officialDomain || currentHost === "localhost" || currentHost === "127.0.0.1") && !isIframe;
+
+      // Extract AppCodes from meta tags
+      const validCodes = [
+          document.querySelector('meta[name="AppCode-1"]')?.content,
+          document.querySelector('meta[name="AppCode-2"]')?.content,
+          document.querySelector('meta[name="AppCode-3"]')?.content,
+          document.querySelector('meta[name="AppCode-4"]')?.content
+      ].filter(Boolean);
+
+      const injectMainScript = () => {
+          const script = document.createElement('script');
+          script.src = 'script.js'; // Your external script file
+          document.body.appendChild(script);
+      };
+
+      if (isAuthorizedEnv) {
+          // Normal execution on authorized domain
+          injectMainScript();
+      } else {
+          // Unauthorized domain or Iframe detected: Block UI
+          const overlay = document.createElement('div');
+          overlay.id = 'domain-lock-overlay';
+          overlay.innerHTML = `
+              <div class="lock-box">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2" style="margin-bottom:16px;">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                  <h2>Access Restricted</h2>
+                  <p>This instance of NovaPlay Suite is being hosted outside of the Akshat Network Hub. Please enter a valid Web Access Code to proceed.</p>
+                  <input type="password" id="app-code-input" class="lock-input" placeholder="Enter Web Access Code" autocomplete="off"/>
+                  <button id="app-code-submit" class="lock-btn">Unlock NovaPlay</button>
+                  <div id="app-code-error" class="lock-error"></div>
+              </div>
+          `;
+          document.body.appendChild(overlay);
+          overlay.style.display = 'flex';
+
+          let attempts = 0;
+          const maxAttempts = 3;
+          const submitBtn = overlay.querySelector('#app-code-submit');
+          const inputField = overlay.querySelector('#app-code-input');
+          const errorMsg = overlay.querySelector('#app-code-error');
+
+          const verifyCode = () => {
+              const userCode = inputField.value.trim();
+              if (validCodes.includes(userCode)) {
+                  overlay.style.display = 'none';
+                  injectMainScript();
+              } else {
+                  attempts++;
+                  if (attempts >= maxAttempts) {
+                      errorMsg.textContent = "Maximum attempts reached. Redirecting...";
+                      setTimeout(() => { window.top.location.href = redirectURL; }, 1500);
+                  } else {
+                      errorMsg.textContent = `Invalid code. ${maxAttempts - attempts} attempt(s) remaining.`;
+                      inputField.value = '';
+                  }
+              }
+          };
+
+          submitBtn.addEventListener('click', verifyCode);
+          inputField.addEventListener('keypress', (e) => { if (e.key === 'Enter') verifyCode(); });
+      }
+  });
+</script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="app-matrix">
+    <header>
+        <div class="brand-cluster">
+            <img src="novaplay.svg" height="40px">
+            <span>NovaPlay Suite</span>
+        </div>
+
+        <div class="search-wrapper">
+            <svg class="icon-mag" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input id="in-mag" type="text" placeholder="Scrape live web pipes or inspect vault..." autocomplete="off"/>
+            <button id="in-clear" class="search-clear">✕</button>
+        </div>
+
+        <div class="action-tier">
+            <button id="btn-import" class="glass-btn accent">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                <span>Import Files</span>
+            </button>
+            <button id="desktop-collapse-btn" class="glass-btn" title="Toggle Drawer">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            </button>
+            <button id="drawer-toggle-btn" class="glass-btn" style="display:none;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <main id="deck-viewport">
+        <div id="v-vault" class="deck-view active">
+            <div class="view-mast"><div><h1>My Audio Vault</h1></div><span id="c-vault">0 Tracks</span></div>
+            <div id="g-vault" class="card-matrix"></div>
+        </div>
+
+        <div id="v-loved" class="deck-view">
+            <div class="view-mast"><div><h1 style="color:var(--rose-alert);">Loved Ones</h1></div><span id="c-loved">0 Tracks</span></div>
+            <div id="g-loved" class="card-matrix"></div>
+        </div>
+
+        <div id="v-blocked" class="deck-view">
+            <div class="view-mast"><div><h1 style="color:var(--text-sub);">Restricted Vault</h1></div><span>Purged Streams</span></div>
+            <div id="t-blocked" class="table-void"></div>
+        </div>
+
+        <div id="v-folder" class="deck-view">
+            <div class="view-mast"><div><h1 id="render-f-name">Folder</h1></div><span id="c-folder">0 Mapped</span></div>
+            <div id="g-folder" class="card-matrix"></div>
+        </div>
+
+        <div id="v-search" class="deck-view">
+            <div class="view-mast"><div><h1 id="render-s-name">Pipes Query</h1></div><span>Web Audio Proxy</span></div>
+            <div id="g-search" class="card-matrix"></div>
+        </div>
+    </main>
+
+    <aside id="drawer-sidebar">
+        <div class="drawer-head">
+            <span>Navigation Deck</span>
+            <button id="mobile-drawer-kill" style="background:none; border:none; color:white; font-size:14px; cursor:pointer; display:none;">✕</button>
+        </div>
+        <ul class="drawer-list">
+            <li><button class="drawer-btn active" data-dump="v-vault"><span style="display:flex;align-items:center;gap:10px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>My Vault</span></button></li>
+            <li><button class="drawer-btn" data-dump="v-loved"><span style="display:flex;align-items:center;gap:10px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>Loved Ones</span></button></li>
+            <li><button class="drawer-btn" data-dump="v-blocked"><span style="display:flex;align-items:center;gap:10px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20z"/></svg>Blocked Vault</span></button></li>
+            <li style="margin: 20px 0 6px 4px; font-size:10px; font-weight:700; color:var(--border-line); text-transform:uppercase;">CUSTOM FOLDERS</li>
+            <div id="f-drawer-inject"></div>
+            <li style="margin-top:8px;"><button id="f-new-btn" class="drawer-btn" style="color:var(--text-main); background:var(--surface-card); justify-content:center;">+ New Folder</button></li>
+        </ul>
+    </aside>
+
+    <footer id="island-sink">
+        <div class="island-art-unit">
+            <img id="i-thumb" class="island-thumb" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%2324242e' width='100' height='100'/%3E%3C/svg%3E" alt="Cover"/>
+            <div class="island-names">
+                <span id="i-title" class="island-title">No Audio Pipe</span>
+                <span id="i-sub" class="island-sub">Awaiting track selection</span>
+            </div>
+        </div>
+
+        <div class="island-engine">
+            <div class="engine-buttons">
+                <button id="i-shuf" class="sink-ctrl"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"/></svg></button>
+                <button id="i-prv" class="sink-ctrl"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg></button>
+                <button id="i-ply" class="sink-ctrl trigger-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+                <button id="i-nxt" class="sink-ctrl"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg></button>
+                <button id="i-rep" class="sink-ctrl"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg></button>
+            </div>
+            <div class="pipe-tracker">
+                <span id="i-cur">0:00</span>
+                <div id="i-bar" class="track-slot"><div id="i-run" class="track-run"></div></div>
+                <span id="i-dur">0:00</span>
+            </div>
+        </div>
+
+        <div class="island-utilities">
+            <button id="i-vis" class="sink-ctrl active" title="Visualizer Deck"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v18M6 8v8M18 9v6M3 11v2M21 10v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+            <div id="i-vbar" class="vol-slot"><div id="i-vrun" class="vol-run"></div></div>
+        </div>
+    </footer>
+</div>
+
+<video id="master-media-sink" crossorigin="anonymous" playsinline style="display:none;"></video>
+<input id="hidden-file-broker" type="file" accept="audio/*,video/*" multiple style="display:none;"/>
+
+<div id="vis-matrix" class="vis-screen">
+    <button id="v-kill" class="vis-exit">✕</button>
+    <div id="v-dock" class="vis-box"><canvas id="vis-canvas"></canvas></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%"
+     data-engine-provenance="NovaPlay-Suite-Proprietary-v2" data-author="NovaPlay Core OS | Akshat Network Hub">
+
+  <!-- =========================================================================
+       PROPRIETARY SOURCE CODE — NOVAPLAY AUDIO OS
+       © NovaPlay Suite & Associates. All Rights Reserved.
+       ========================================================================= -->
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+      <rdf:Description rdf:about="This SVG logo belongs only to NovaPlay - Created by Akshat Prasad under his Akshat Network Hub Initiative">
+        <dc:title>NovaPlay Suite - Immersive Audio OS</dc:title>
+        <dc:creator>NovaPlay | Akshat Prasad | Akshat Network Hub</dc:creator>
+        <dc:rights>Proprietary Asset. Unauthorized copying or redistribution prohibited.</dc:rights>
+      </rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <defs>
+    <!-- GHOST WATERMARK: Survives automated JS/HTML minifiers -->
+    <text id="np-code-lock" display="none" opacity="0" pointer-events="none">
+      LICENSE: NOVAPLAY-INTERNAL-USE-ONLY. SEC:94b-A01.
+    </text>
+
+    <!-- 1. Deep OLED Space Stage -->
+    <radialGradient id="oledBase" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#14141f"/>
+      <stop offset="60%" stop-color="#09090e"/>
+      <stop offset="100%" stop-color="#050507"/>
+    </radialGradient>
+
+    <!-- 2. Gyroscopic Orbit A (Electric Cyan/Purple) -->
+    <linearGradient id="gyroA" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#4c1d95"/>
+    </linearGradient>
+
+    <!-- 3. Gyroscopic Orbit B (Rose/Violet) -->
+    <linearGradient id="gyroB" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f43f5e"/>
+      <stop offset="60%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#050507"/>
+    </linearGradient>
+
+    <!-- 4. Monolithic Frosted Stealth Shard -->
+    <linearGradient id="stealthFrosted" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="40%" stop-color="#e2e8f0" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.25"/>
+    </linearGradient>
+
+    <!-- 5. Hyper-Sharp Metallic Edge Glint -->
+    <linearGradient id="razorEdge" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="50%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#f43f5e"/>
+    </linearGradient>
+
+    <!-- 6. Sci-Fi Anamorphic Lens Flare Gradient -->
+    <linearGradient id="anamorphicStreak" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0"/>
+      <stop offset="35%" stop-color="#38bdf8" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="1"/>
+      <stop offset="65%" stop-color="#8b5cf6" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Deep Void Crossover Shadow -->
+    <filter id="heavyVoid" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="8" dy="16" stdDeviation="14" flood-color="#000000" flood-opacity="0.95"/>
+      <feDropShadow dx="-4" dy="-4" stdDeviation="20" flood-color="#8b5cf6" flood-opacity="0.3"/>
+    </filter>
+
+    <filter id="coreGlow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- A. THE OUTER CONTAINMENT FIELD -->
+  <circle cx="250" cy="250" r="240" fill="url(#oledBase)"/>
+  <circle cx="250" cy="250" r="239" fill="none" stroke="#1f1f2e" stroke-width="2"/>
+
+  <!-- B. THE 3-AXIS SPATIAL GYROSCOPE (The Data OS Web) -->
+  <!-- Axis X-Y Tilt Left (-32°) -->
+  <g transform="rotate(-32 250 250)">
+    <ellipse cx="250" cy="250" rx="210" ry="70" fill="none" stroke="url(#gyroA)" stroke-width="1.5" opacity="0.4"/>
+    <!-- Orbiting Audio Frequency Data Ticks -->
+    <ellipse cx="250" cy="250" rx="210" ry="70" fill="none" stroke="url(#gyroA)" stroke-width="5" stroke-dasharray="2, 16" opacity="0.85"/>
+  </g>
+
+  <!-- Axis X-Y Tilt Right (+32°) -->
+  <g transform="rotate(32 250 250)">
+    <ellipse cx="250" cy="250" rx="210" ry="70" fill="none" stroke="url(#gyroB)" stroke-width="1.5" opacity="0.3"/>
+    <ellipse cx="250" cy="250" rx="210" ry="70" fill="none" stroke="url(#gyroB)" stroke-width="4" stroke-dasharray="12, 12" opacity="0.65"/>
+  </g>
+
+  <!-- Silent Z-Axis Tracking Ring -->
+  <ellipse cx="250" cy="250" rx="70" ry="210" fill="none" stroke="#222232" stroke-dasharray="4, 4" stroke-width="1.5"/>
+
+  <!-- C. THE INNER HORIZON STAGE -->
+  <circle cx="250" cy="250" r="125" fill="#07070a" stroke="#1c1c28" stroke-width="4" filter="drop-shadow(0px 0px 25px rgba(0,0,0,0.9))"/>
+  <circle cx="250" cy="250" r="115" fill="none" stroke="#8b5cf6" stroke-width="1" opacity="0.25"/>
+
+  <!-- D. THE STEALTH-BOMBER PLAY CHEVRON -->
+  <path d="M 185,155 L 355,250 L 185,345 L 220,250 Z" 
+        fill="url(#stealthFrosted)" stroke="url(#razorEdge)" 
+        stroke-width="3.5" stroke-linejoin="miter" stroke-miterlimit="10" filter="url(#heavyVoid)"/>
+
+  <!-- E. THE CORE SINGULARITY -->
+  <circle cx="220" cy="250" r="14" fill="#ffffff" filter="url(#coreGlow)"/>
+
+  <!-- F. ANAMORPHIC OPTICAL LENS FLARE -->
+  <ellipse cx="250" cy="250" rx="235" ry="2" fill="url(#anamorphicStreak)" filter="blur(0.5px)" opacity="0.9"/>
+  <ellipse cx="250" cy="250" rx="90" ry="4" fill="#ffffff" filter="blur(2px)" opacity="0.7"/>
+</svg>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>System Anomaly | NovaPlay OS</title>
+    <link rel="icon" href="novaplay.svg" type="image/svg+xml" sizes="any">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ==========================================================================
+         * NOVAPLAY OS - ERROR STATE DESIGN SYSTEM
+         * ========================================================================== */
+        :root {
+            --void-black: #050507;
+            --surface-base: #101014;
+            --surface-card: #18181f;
+            --surface-hover: #24242e;
+            --text-main: #f3f3f8;
+            --text-sub: #9494a0;
+            --border-line: #22222c;
+            --violet-glow: #8b5cf6;
+            --rose-alert: #f43f5e;
+            --emerald-ok: #10b981;
+            --snappy: cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html, body {
+            height: 100%; width: 100%;
+            background: var(--void-black); color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+            overflow: hidden; -webkit-font-smoothing: antialiased;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        /* Giant Background Ghost Text */
+        .bg-ghost {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            font-size: 40vw; font-weight: 900; color: var(--violet-glow);
+            opacity: 0.03; z-index: 0; pointer-events: none; user-select: none;
+        }
+
+        /* Glassmorphic Error Card */
+        .error-island {
+            position: relative; z-index: 10;
+            background: rgba(16, 16, 20, 0.65); backdrop-filter: blur(25px);
+            border: 1px solid rgba(139, 92, 246, 0.2); border-radius: 28px;
+            padding: 48px; max-width: 560px; width: 90%;
+            box-shadow: 0 30px 60px -15px rgba(0,0,0,0.9), inset 0 0 0 1px rgba(255,255,255,0.05);
+            text-align: center; animation: floatUp 0.6s var(--snappy);
+        }
+
+        .error-island::before {
+            content: ''; position: absolute; top: -1px; left: 10%; right: 10%; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--violet-glow), transparent); opacity: 0.5;
+        }
+
+        /* Typography */
+        .err-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(244, 63, 94, 0.1); border: 1px solid rgba(244, 63, 94, 0.2);
+            color: var(--rose-alert); padding: 6px 14px; border-radius: 8px;
+            font-size: 11px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+        
+        .err-title { font-size: 32px; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.5px; }
+        .err-desc { font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-bottom: 32px; }
+        .err-typo { font-family: monospace; background: var(--surface-card); padding: 4px 8px; border-radius: 6px; color: var(--violet-glow); font-size: 13px; }
+
+        /* Action Buttons */
+        .action-tier { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; }
+        .glass-btn {
+            padding: 12px 24px; border-radius: 12px; border: 1px solid var(--border-line);
+            background: var(--surface-card); color: var(--text-main); font-weight: 600; font-size: 14px;
+            cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.2s;
+        }
+        .glass-btn.accent { background: var(--violet-glow); border-color: var(--violet-glow); color: var(--void-black); font-weight: 700; box-shadow: 0 8px 20px rgba(139, 92, 246, 0.25); }
+        .glass-btn:hover { background: var(--surface-hover); transform: translateY(-2px); }
+        .glass-btn.accent:hover { background: var(--text-main); }
+
+        /* Standalone Modal Subsystem (PamphletCard Port) */
+        .m-backdrop { position: fixed; inset: 0; background: rgba(5,5,7,0.85); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; z-index: 2000; animation: mFade 0.2s; padding: 16px; text-align: left; }
+        .m-panel { background: var(--surface-base); border: 1px solid var(--border-line); border-radius: 24px; padding: 26px; max-width: 480px; width: 100%; box-shadow: 0 30px 60px rgba(0,0,0,0.9); animation: mPop 0.2s; max-height: 90vh; overflow-y: auto; }
+        .m-head { font-size: 18px; font-weight: 800; display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+        .m-body { font-size: 13px; color: var(--text-sub); line-height: 1.6; margin-bottom: 24px; }
+        .m-foot { display: flex; gap: 10px; justify-content: flex-end; }
+
+        @keyframes floatUp { from { opacity: 0; transform: translateY(30px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        @keyframes mFade { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes mPop { from { transform: scale(0.95) translateY(20px); opacity: 0; } to { transform: scale(1) translateY(0); opacity: 1; } }
+    </style>
+</head>
+<body>
+
+    <div class="bg-ghost" id="bg-code">404</div>
+
+    <main class="error-island">
+        <div class="err-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span id="ui-type">Anomaly Type: 404</span>
+        </div>
+        
+        <h1 class="err-title" id="ui-title">Sector Not Found</h1>
+        <p class="err-desc" id="ui-desc">
+            The data pipe you are trying to access does not exist within the current memory tier.<br><br>
+            Reference: <span class="err-typo" id="ui-typo">ERR_NOT_FOUND</span>
+        </p>
+
+        <div class="action-tier">
+            <button class="glass-btn" id="btn-back">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                Return Back
+            </button>
+            <button class="glass-btn" id="btn-learn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                Learn More
+            </button>
+            <button class="glass-btn accent" id="btn-home">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                NovaPlay Home
+            </button>
+        </div>
+    </main>
+
+    <script>
+        /* ==========================================================================
+         * 1. ERROR CONFIGURATION (Change these 3 lines for 500.html, 403.html, etc.)
+         * ========================================================================== */
+        const ERROR_CONFIG = {
+            code: "404",
+            title: "Sector Not Found",
+            typoCode: "ERR_NO_ROUTING_MAP",
+            description: "The data pipe you are trying to access does not exist within the current memory tier. The sector may have been purged, or the URL syntax is corrupted.",
+            learnMoreText: "A 404 error occurs when the NovaPlay engine communicates with the server successfully, but the server cannot find the requested asset. <br><br><b>Troubleshooting:</b><br>1. Check the URL for spelling mistakes.<br>2. The playlist or track may have been deleted by the owner.<br>3. Clear your browser cache."
+        };
+
+        /* ==========================================================================
+         * 2. STANDALONE MODAL ENGINE (PamphletCard)
+         * ========================================================================== */
+        class PamphletCard {
+            static create({ title, body, buttons }) {
+                return new Promise(resolve => {
+                    const ov = document.createElement('div'); ov.className = 'm-backdrop';
+                    ov.innerHTML = `<div class="m-panel" onclick="event.stopPropagation()"><div class="m-head">${title}</div><div class="m-body">${body}</div><div class="m-foot">${buttons}</div></div>`;
+                    document.body.appendChild(ov);
+                    const exit = v => { ov.remove(); resolve(v); };
+                    ov.onclick = () => exit(null);
+                    ov.querySelectorAll('[data-ret]').forEach(b => b.onclick = () => exit(b.getAttribute('data-ret') === 'null' ? null : b.getAttribute('data-ret')));
+                });
+            }
+
+            static alert(title, msg) { 
+                return this.create({ 
+                    title: `<span style="color:var(--violet-glow);">${title}</span>`, 
+                    body: msg, 
+                    buttons: `<button class="glass-btn accent" data-ret="ok">Understood</button>` 
+                }); 
+            }
+
+            static confirm(title, msg) { 
+                return this.create({ 
+                    title: `<span style="color:var(--rose-alert);">${title}</span>`, 
+                    body: msg, 
+                    buttons: `<button class="glass-btn" data-ret="null">Dismiss</button><button class="glass-btn accent" style="background:var(--rose-alert);border-color:var(--rose-alert);" data-ret="yes">Execute</button>` 
+                }); 
+            }
+        }
+
+        /* ==========================================================================
+         * 3. INITIALIZATION & ROUTING
+         * ========================================================================== */
+        document.addEventListener('DOMContentLoaded', () => {
+            // Inject Config Data into DOM
+            document.title = `${ERROR_CONFIG.code} | NovaPlay OS`;
+            document.getElementById('bg-code').textContent = ERROR_CONFIG.code;
+            document.getElementById('ui-type').textContent = `Anomaly Type: ${ERROR_CONFIG.code}`;
+            document.getElementById('ui-title').textContent = ERROR_CONFIG.title;
+            document.getElementById('ui-typo').textContent = ERROR_CONFIG.typoCode;
+            document.getElementById('ui-desc').innerHTML = `${ERROR_CONFIG.description}<br><br>Reference: <span class="err-typo">${ERROR_CONFIG.typoCode}</span>`;
+
+            // Button Routing
+            document.getElementById('btn-back').onclick = () => {
+                if (window.history.length > 1) window.history.back();
+                else window.location.href = '/'; // Fallback if opened in new tab
+            };
+
+            document.getElementById('btn-home').onclick = () => {
+                window.location.href = 'index.html'; // Change to absolute path if hosted inside a sub-folder (e.g. '/NovaPlaySuite/')
+            };
+
+            document.getElementById('btn-learn').onclick = () => {
+                PamphletCard.alert(`Diagnostic: Code ${ERROR_CONFIG.code}`, ERROR_CONFIG.learnMoreText);
+            };
+        });
+    </script>
+</body>
+</html>
