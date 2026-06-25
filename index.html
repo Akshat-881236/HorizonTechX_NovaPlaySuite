@@ -107,52 +107,55 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-      const officialDomain = "akshat-881236.github.io";
-      const officialURL = "https://akshat-881236.github.io/HorizonTechX_NovaPlaySuite/";
-      const redirectURL = "https://akshat-881236.github.io/HorizonTechX_NovaPlaySuite/403.html"
+      // Whitelist of authorized domains (includes both your repos and local testing)
+      const allowedDomains = ["akshat-881236.github.io", "akshat-145609.github.io", "localhost", "127.0.0.1"];
+      const redirectURL = "https://akshat-881236.github.io/HorizonTechX_NovaPlaySuite/403.html";
       
       const currentHost = window.location.hostname;
-      const isIframe = window.self !== window.top;
       
-      // Allow localhost for your own local development testing
-      const isAuthorizedEnv = (currentHost === officialDomain || currentHost === "localhost" || currentHost === "127.0.0.1") && !isIframe;
+      // Iframe validation check
+      let isAuthorizedIframe = true;
+      if (window.self !== window.top) {
+          try {
+              // Extract the hostname of the parent window embedding this iframe
+              const parentUrl = new URL(document.referrer);
+              isAuthorizedIframe = allowedDomains.includes(parentUrl.hostname);
+          } catch(e) {
+              isAuthorizedIframe = false; // Block if browser restricts referrer check
+          }
+      }
 
-      // Extract AppCodes from meta tags
-      const validCodes = [
-          document.querySelector('meta[name="AppCode-1"]')?.content,
-          document.querySelector('meta[name="AppCode-2"]')?.content,
-          document.querySelector('meta[name="AppCode-3"]')?.content,
-          document.querySelector('meta[name="AppCode-4"]')?.content
-      ].filter(Boolean);
+      // Check if environment is completely clear
+      const isAuthorizedEnv = allowedDomains.includes(currentHost) && isAuthorizedIframe;
 
-      const injectMainScript = () => {
-          const script = document.createElement('script');
-          script.src = 'other_domain.js'; // Your external script file
-          document.body.appendChild(script);
-      };
-
-      if (isAuthorizedEnv) {
-          // Normal execution on authorized domain
-          injectMainScript();
-      } else {
-          // Unauthorized domain or Iframe detected: Block UI
+      // If unauthorized, deploy the Lock Overlay
+      if (!isAuthorizedEnv) {
           const overlay = document.createElement('div');
           overlay.id = 'domain-lock-overlay';
+          // Force absolute top z-index and hide underlying app
+          overlay.style.cssText = 'position:fixed; inset:0; background:rgba(5,5,7,0.98); z-index:999999; display:flex; align-items:center; justify-content:center; color:#fff; font-family:sans-serif;';
           overlay.innerHTML = `
-              <div class="lock-box">
+              <div style="background:#101014; border:1px solid #22222c; border-radius:24px; padding:32px; width:90%; max-width:400px; text-align:center; box-shadow:0 20px 50px rgba(0,0,0,0.8);">
                   <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2" style="margin-bottom:16px;">
                       <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
                       <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                   </svg>
-                  <h2>Access Restricted</h2>
-                  <p>This instance of NovaPlay Suite is being hosted outside of the Akshat Network Hub. Please enter a valid Web Access Code to proceed.</p>
-                  <input type="password" id="app-code-input" class="lock-input" placeholder="Enter Web Access Code" autocomplete="off"/>
-                  <button id="app-code-submit" class="lock-btn">Unlock NovaPlay</button>
-                  <div id="app-code-error" class="lock-error"></div>
+                  <h2 style="color:#8b5cf6; margin-bottom:12px; font-weight:800;">Access Restricted</h2>
+                  <p style="color:#9494a0; font-size:14px; margin-bottom:24px;">This instance of NovaPlay is hosted outside of the Akshat Network Hub. Provide a Web Access Code to proceed.</p>
+                  <input type="password" id="app-code-input" placeholder="Enter Web Access Code" autocomplete="off" style="width:100%; padding:14px; border-radius:12px; border:1px solid #22222c; background:#18181f; color:#fff; text-align:center; margin-bottom:16px; outline:none;"/>
+                  <button id="app-code-submit" style="width:100%; padding:14px; border-radius:12px; border:none; background:#8b5cf6; color:#fff; font-weight:700; cursor:pointer;">Unlock NovaPlay</button>
+                  <div id="app-code-error" style="color:#f43f5e; font-size:13px; font-weight:600; margin-top:12px; min-height:18px;"></div>
               </div>
           `;
           document.body.appendChild(overlay);
-          overlay.style.display = 'flex';
+
+          // Extract AppCodes safely
+          const validCodes = [
+              document.querySelector('meta[name="AppCode-1"]')?.content,
+              document.querySelector('meta[name="AppCode-2"]')?.content,
+              document.querySelector('meta[name="AppCode-3"]')?.content,
+              document.querySelector('meta[name="AppCode-4"]')?.content
+          ].filter(Boolean);
 
           let attempts = 0;
           const maxAttempts = 3;
@@ -163,8 +166,11 @@
           const verifyCode = () => {
               const userCode = inputField.value.trim();
               if (validCodes.includes(userCode)) {
-                  overlay.style.display = 'none';
-                  injectMainScript();
+                  // Bypass success: Remove lock and inject warning script
+                  overlay.remove();
+                  const script = document.createElement('script');
+                  script.src = 'other_domain.js';
+                  document.body.appendChild(script);
               } else {
                   attempts++;
                   if (attempts >= maxAttempts) {
