@@ -108,8 +108,6 @@ HorizonTechX_NovaPlaySuite/
 Developed by **Akshat Prasad**.
 UI/UX Architecture inspired by Spatial Computing, OLED Dark Modes, and modern Glassmorphism.
 
-*Internal Asset ID: `NovaPlay-Suite-Proprietary-v2*`
-
 ```
-
+Internal Asset ID: NovaPlay-Suite-Proprietary-v2
 ```
