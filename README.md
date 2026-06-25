@@ -6,7 +6,6 @@ Copy the block below and save it as `README.md` in the root of your repository.
 
 ---
 
-```markdown
 # NovaPlay Suite — Immersive Audio OS 🎵
 
 ![NovaPlay Version](https://img.shields.io/badge/Version-2.0.0-8b5cf6?style=for-the-badge)
