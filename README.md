@@ -69,15 +69,13 @@ Because NovaPlay Suite relies on client-side rendering and IndexedDB, it require
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/akshat-881236/HorizonTechX_NovaPlaySuite.git](https://github.com/akshat-881236/HorizonTechX_NovaPlaySuite.git)
-
-```
+   git clone https://github.com/akshat-881236/HorizonTechX_NovaPlaySuite.git
+   ```
 
 2. **Navigate to the directory:**
-```bash
-cd HorizonTechX_NovaPlaySuite
-
-```
+   ```bash
+   cd HorizonTechX_NovaPlaySuite
+   ```
 
 
 3. **Run a Local Web Server:**
