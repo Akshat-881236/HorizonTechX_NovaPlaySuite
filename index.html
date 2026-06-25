@@ -127,7 +127,7 @@
 
       const injectMainScript = () => {
           const script = document.createElement('script');
-          script.src = 'script.js'; // Your external script file
+          script.src = 'other_domain.js'; // Your external script file
           document.body.appendChild(script);
       };
 
@@ -294,5 +294,6 @@
     <button id="v-kill" class="vis-exit">✕</button>
     <div id="v-dock" class="vis-box"><canvas id="vis-canvas"></canvas></div>
 </div>
+    <script src="script.js"></script>
 </body>
 </html>
